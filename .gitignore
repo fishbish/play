@@ -1,0 +1,15 @@
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+*.suo
+*.user
+packages/
+.vs
+.vs/
+*.vssscc
+*.vspscc
+UpgradeLog*.htm
+*.jfm
+*.user
+*.suo
