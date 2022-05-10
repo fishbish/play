@@ -20,13 +20,13 @@ class App extends React.Component {
 
   renderCurrencyDropDown() {
     if (this.state.currencies === null) {
-      return <div>Loading currencies...</div>;
+      return <Form.Select placeholder="Loading Currencies" disabled />
     } else {
       var currencies = [];
       for (var currency in this.state.currencies) {
         currencies.push(currency);
       }
-      return <Form.Select>
+      return <Form.Select placeholder='LoadingCurrencies'>
           {currencies.map((currency) => {
             return <option key={currency}>{currency}</option>
           })}
@@ -35,6 +35,8 @@ class App extends React.Component {
   }
 
   render() {
+    const disabled = this.state.currencies === null;
+
     return (
       <div className="App">
         <header className="App-header">
@@ -43,7 +45,7 @@ class App extends React.Component {
           </p>
           <Form>
             {this.renderCurrencyDropDown()}
-            <Button type="submit">Maximise Arbitrage</Button>
+            <Button type="submit" disabled={disabled}>{disabled ? "Loading currencies" : "Maximise Arbitrage"}</Button>
           </Form>
         </header>
       </div>
