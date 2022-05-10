@@ -5,7 +5,8 @@
         "node": true
     },
     "extends": [
-        "eslint:recommended"
+        "eslint:recommended",
+        "plugin:react/recommended"
     ],
     "parserOptions": {
         "ecmaFeatures": {
@@ -18,9 +19,5 @@
         "react"
     ],
     "rules": {
-        "semi": [
-            "error",
-            "always"
-        ]
     }
 }
