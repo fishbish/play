@@ -1,11 +1,20 @@
-﻿namespace DataStructuresAndAlgorithms
+﻿internal class DoublyLinkedNode
 {
-  internal class DoublyLinkedNode
+  public DoublyLinkedNode(int data)
   {
-    internal int Data { get; set; }
+    this.Data = data;
+  }
 
-    internal DoublyLinkedNode? Next { get; set; }
+  internal int Data { get; set; }
 
-    internal DoublyLinkedNode? Previous { get; set; }
+  internal DoublyLinkedNode? Next { get; set; }
+
+  internal DoublyLinkedNode? Previous { get; set; }
+
+  public override string ToString()
+  {
+    var previousString = $"Prev:{this.Previous?.Data.ToString() ?? "null"}";
+    var nextString = $"Next:{this.Next?.Data.ToString() ?? "null"}";
+    return $"{previousString}, Data:{this.Data}, {nextString}";
   }
 }
