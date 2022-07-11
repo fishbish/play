@@ -1,12 +1,10 @@
-﻿class Program
+﻿using DataStructuresAndAlgorithms;
+
+class Program
 {
   static void Main(string[] args)
   {
-    // See https://aka.ms/new-console-template for more information
-    // 5,7,2,24,15,6,9,12,1,66
-    // 2,3,4,1,5,6,7
-    // 1,2,3,4,5,6,7
-    // 7,6,5,4,3,2,1
+    TowerOfHanoi.Move(4, 'a', 'c', 'b');
     Console.WriteLine("Enter Numbers:");
     var input = Console.ReadLine();
     var numbersText = input.Split(',');
