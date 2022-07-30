@@ -2,18 +2,19 @@
 {
   internal class TowerOfHanoi
   {
-    internal static void Move(int n, char from, char to, char intermediate)
+    internal static void Move(int n, char from, char to, char intermediate, ref int steps)
     {
       if (intermediate == to || n == 1)
       {
         Console.WriteLine($"Moving {n} from {from} to {to}");
+        steps++;
         return;
       }
-      else
+      else 
       {
-        Move(n-1, from, intermediate, to);
-        Move(n, from, to, to);
-        Move(n-1, intermediate, to, from);
+        Move(n-1, from, intermediate, to, ref steps);
+        Move(n, from, to, to, ref steps);
+        Move(n-1, intermediate, to, from, ref steps);
         return;
       }
     }
