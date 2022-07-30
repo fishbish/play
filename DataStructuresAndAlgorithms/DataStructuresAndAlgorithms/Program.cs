@@ -7,11 +7,30 @@ class Program
     while (1==1)
     {
       Console.WriteLine("Input:");
-      var input = Console.ReadLine();
-      var steps = 0;
-      TowerOfHanoi.Move(int.Parse(input), 'a', 'c', 'b', ref steps);
-      Console.WriteLine(steps);
+      RunHashTable(Console.ReadLine());
     }
+  }
+
+  private static void RunHashTable(string input)
+  {
+    var hashTable = new HashTable(input.Length);
+    for (int i = 0; i < input.Length; i++)
+    {
+      hashTable.InsertNode(new HashNode() { Key = input[i], Value = input[i] });
+    }
+
+    while (1 == 1)
+    {
+      Console.WriteLine("Delete:");
+      hashTable.DeleteNode(Console.ReadLine()[0]);
+    }
+  }
+
+  private static void RunTOH(string input)
+  {
+    var steps = 0;
+    TowerOfHanoi.Move(int.Parse(input), 'a', 'c', 'b', ref steps);
+    Console.WriteLine(steps);
   }
 
   private static void RunSort(string input)
