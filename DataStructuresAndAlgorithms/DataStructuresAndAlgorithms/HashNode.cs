@@ -1,8 +1,8 @@
 ﻿namespace DataStructuresAndAlgorithms
 {
-  internal class HashNode
+  internal class Record
   {
-    public int Key { get; set; }
-    public char Value { get; set; }
+    public object Key { get; set; }
+    public object Value { get; set; }
   }
 }

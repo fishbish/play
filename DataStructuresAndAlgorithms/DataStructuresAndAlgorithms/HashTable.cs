@@ -4,10 +4,10 @@
   {
     internal HashTable(int noOfKeys)
     {
-      Table = new HashNode?[noOfKeys * 4];
+      Table = new Record[noOfKeys * 4];
     }
 
-    private HashNode?[] Table { get; set; }
+    private Record[] Table { get; set; }
 
     private int NoOfKeys { get; set; }
 
@@ -15,7 +15,7 @@
 
     private int MaxProbeSteps => (int)Math.Ceiling(1 / (1 - this.LoadFactor));
 
-    public void InsertNode(HashNode node)
+    public void InsertNode(Record node)
     {
       var index = -1;
       for (int i = this.MaxProbeSteps; i >= 0; i--)
@@ -41,13 +41,13 @@
       this.NoOfKeys++;
     }
 
-    public HashNode? GetNode(int key)
+    public Record? GetNode(object key)
     {
-      for (int i = 1; i <= this.MaxProbeSteps; i++)
+      for (int i = 0; i <= this.MaxProbeSteps; i++)
       {
         var index = this.GetDoubleHash(key, i);
         var node = this.Table[index];
-        if (node != null && node.Key == key)
+        if (node != null && node.Key.Equals(key))
         {
           return node;
         }
@@ -55,21 +55,22 @@
       return null;
     }
 
-    public void DeleteNode (int key)
+    public void DeleteNode (object key)
     {
       for (int i = 0; i <= this.MaxProbeSteps; i++)
       {
         var index = this.GetDoubleHash(key, i);
         var node = this.Table[index];
-        if (node != null && node.Key == key)
+        if (node != null && node.Key.Equals(key))
         {
           this.Table[index] = null;
           this.NoOfKeys--;
+          return;
         }
       }
     }
 
-    private int GetDoubleHash(int key, int probeStep)
+    private int GetDoubleHash(object key, int probeStep)
     {
       var nodeHash = key.GetHashCode();
       var hashHash = nodeHash.GetHashCode();

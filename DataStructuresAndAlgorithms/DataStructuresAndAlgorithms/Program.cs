@@ -16,13 +16,16 @@ class Program
     var hashTable = new HashTable(input.Length);
     for (int i = 0; i < input.Length; i++)
     {
-      hashTable.InsertNode(new HashNode() { Key = input[i], Value = input[i] });
+      hashTable.InsertNode(new Record() { Key = input[i], Value = input[i] });
     }
 
     while (1 == 1)
     {
       Console.WriteLine("Delete:");
       hashTable.DeleteNode(Console.ReadLine()[0]);
+      Console.WriteLine("Get:");
+      var record = hashTable.GetNode(Console.ReadLine()[0]);
+      Console.WriteLine(record.Value);
     }
   }
 
